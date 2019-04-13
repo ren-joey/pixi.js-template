@@ -1,7 +1,8 @@
 const path = require('path')
 const webpack = require('webpack')
-const cleanWebpackPlugin = require('clean-webpack-plugin')
+// const cleanWebpackPlugin = require('clean-webpack-plugin')
 const htmlWebpackPlugin = require('html-webpack-plugin')
+const copyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {
   mode: 'development',
@@ -52,8 +53,34 @@ module.exports = {
       template: './index.html',
       filename: 'index.html'
     }),
-    new cleanWebpackPlugin({
-      verbose: true
-    })
+    new copyWebpackPlugin([
+      {
+        from: 'assets/images/fighter.json',
+        to: 'assets/images'
+      },
+      {
+        from: 'assets/images/fighter.png',
+        to: 'assets/images'
+      },
+      {
+        from: 'assets/images/coin.json',
+        to: 'assets/images'
+      },
+      {
+        from: 'assets/images/coin.png',
+        to: 'assets/images'
+      },
+      {
+        from: 'assets/images/mc.json',
+        to: 'assets/images'
+      },
+      {
+        from: 'assets/images/mc.png',
+        to: 'assets/images'
+      }
+    ]),
+    // new cleanWebpackPlugin({
+    //   verbose: true
+    // })
   ]
 }
